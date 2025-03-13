@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- CSS Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <section id="searchbar-container">
+      <form id="form" action="">
+        <input type="text" placeholder="Search" name="search" id="search" />
+        <button onclick="getWeatherAtLocation()">
+          <i class="fa fa-search"></i>
+        </button>
+      </form>
+    </section>
+
+    <section id="location-data">
+      <div id="location-title">Dacorum</div>
+      <div id="location-temperature">
+        5
+        <div class="degree" id="lt-degree"></div>
+      </div>
+      <div id="feels-like">
+        Feels like: 1
+        <div class="degree" id="fl-degree"></div>
+      </div>
+      <div id="high-low">
+        <div id="high">
+          H:7
+          <div class="degree" id="hl-degree"></div>
+        </div>
+        <div id="low">
+          L:2
+          <div class="degree" id="hl-degree"></div>
+        </div>
+      </div>
+      <div id="hourly-forecast">
+        <div class="time-container">
+          <div class="time-data">Now</div>
+          <div class="time-data">14</div>
+          <div class="time-data">15</div>
+          <div class="time-data">16</div>
+          <div class="time-data">17</div>
+          <div class="time-data">18</div>
+          <div class="time-data">18:03</div>
+          <div class="time-data">19</div>
+          <div class="time-data">20</div>
+          <div class="time-data">21</div>
+          <div class="time-data">22</div>
+          <div class="time-data">23</div>
+          <div class="time-data">00</div>
+          <div class="time-data">01</div>
+          <div class="time-data">02</div>
+          <div class="time-data">03</div>
+          <div class="time-data">04</div>
+          <div class="time-data">05</div>
+          <div class="time-data">06</div>
+          <div class="time-data">06:17</div>
+          <div class="time-data">07</div>
+          <div class="time-data">08</div>
+          <div class="time-data">09</div>
+          <div class="time-data">10</div>
+          <div class="time-data">11</div>
+          <div class="time-data">12</div>
+          <div class="time-data">13</div>
+        </div>
+        <div class="icon1-container">
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+        </div>
+        <div class="temperature-container">
+          <div class="temp-data">
+            6
+            <div class="td-degree"></div>
+          </div>
+          <div class="temp-data">
+            6
+            <div class="td-degree"></div>
+          </div>
+          <div class="temp-data">
+            7
+            <div class="td-degree"></div>
+          </div>
+          <div class="temp-data">
+            8
+            <div class="td-degree"></div>
+          </div>
+          <div class="temp-data">
+            6
+            <div class="td-degree"></div>
+          </div>
+          <div class="temp-data">
+            5
+            <div class="td-degree"></div>
+          </div>
+          <div class="temp-data">Sunset</div>
+          <div class="temp-data">
+            6
+            <div class="td-degree"></div>
+          </div>
+          <div class="temp-data">
+            6
+            <div class="td-degree"></div>
+          </div>
+          <div class="temp-data">
+            6
+            <div class="td-degree"></div>
+          </div>
+          <div class="temp-data">
+            6
+            <div class="td-degree"></div>
+          </div>
+          <div class="temp-data">
+            6
+            <div class="td-degree"></div>
+          </div>
+          <div class="temp-data">
+            6
+            <div class="td-degree"></div>
+          </div>
+          <div class="temp-data">
+            6
+            <div class="td-degree"></div>
+          </div>
+          <div class="temp-data">
+            6
+            <div class="td-degree"></div>
+          </div>
+          <div class="temp-data">
+            6
+            <div class="td-degree"></div>
+          </div>
+          <div class="temp-data">
+            6
+            <div class="td-degree"></div>
+          </div>
+          <div class="temp-data">
+            6
+            <div class="td-degree"></div>
+          </div>
+          <div class="temp-data">
+            6
+            <div class="td-degree"></div>
+          </div>
+          <div class="temp-data">Sunrise</div>
+          <div class="temp-data">
+            6
+            <div class="td-degree"></div>
+          </div>
+          <div class="temp-data">
+            6
+            <div class="td-degree"></div>
+          </div>
+          <div class="temp-data">
+            6
+            <div class="td-degree"></div>
+          </div>
+          <div class="temp-data">
+            6
+            <div class="td-degree"></div>
+          </div>
+          <div class="temp-data">
+            6
+            <div class="td-degree"></div>
+          </div>
+          <div class="temp-data">
+            6
+            <div class="td-degree"></div>
+          </div>
+          <div class="temp-data">
+            6
+            <div class="td-degree"></div>
+          </div>
+        </div>
+      </div>
+      <div id="daily-forecast">
+        <div class="date-container">
+          <div class="date-data">Today</div>
+          <div class="date-data">Fri 14</div>
+          <div class="date-data">Sat 15</div>
+          <div class="date-data">Sun 16</div>
+          <div class="date-data">Mon 17</div>
+          <div class="date-data">Tue 18</div>
+          <div class="date-data">Wed 19</div>
+          <div class="date-data">Thu 20</div>
+          <div class="date-data">Fri 21</div>
+          <div class="date-data">Sat 22</div>
+          <div class="date-data">Sun 23</div>
+          <div class="date-data">Mon 24</div>
+          <div class="date-data">Tue 25</div>
+          <div class="date-data">Wed 26</div>
+        </div>
+        <div class="icon2-container">
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+          <div class="icon-data">icon</div>
+        </div>
+        <div class="high-low-container">
+          <div class="high-low-data">
+            <div class="high">
+              H:7
+              <div class="degree" id="hl-degree"></div>
+            </div>
+            <div class="low">
+              L:2
+              <div class="degree" id="hl-degree"></div>
+            </div>
+          </div>
+          <div class="high-low-data">
+            <div class="high">
+              H:7
+              <div class="degree" id="hl-degree"></div>
+            </div>
+            <div class="low">
+              L:2
+              <div class="degree" id="hl-degree"></div>
+            </div>
+          </div>
+          <div class="high-low-data">
+            <div class="high">
+              H:7
+              <div class="degree" id="hl-degree"></div>
+            </div>
+            <div class="low">
+              L:2
+              <div class="degree" id="hl-degree"></div>
+            </div>
+          </div>
+          <div class="high-low-data">
+            <div class="high">
+              H:7
+              <div class="degree" id="hl-degree"></div>
+            </div>
+            <div class="low">
+              L:2
+              <div class="degree" id="hl-degree"></div>
+            </div>
+          </div>
+          <div class="high-low-data">
+            <div class="high">
+              H:7
+              <div class="degree" id="hl-degree"></div>
+            </div>
+            <div class="low">
+              L:2
+              <div class="degree" id="hl-degree"></div>
+            </div>
+          </div>
+          <div class="high-low-data">
+            <div class="high">
+              H:7
+              <div class="degree" id="hl-degree"></div>
+            </div>
+            <div class="low">
+              L:2
+              <div class="degree" id="hl-degree"></div>
+            </div>
+          </div>
+          <div class="high-low-data">
+            <div class="high">
+              H:7
+              <div class="degree" id="hl-degree"></div>
+            </div>
+            <div class="low">
+              L:2
+              <div class="degree" id="hl-degree"></div>
+            </div>
+          </div>
+          <div class="high-low-data">
+            <div class="high">
+              H:7
+              <div class="degree" id="hl-degree"></div>
+            </div>
+            <div class="low">
+              L:2
+              <div class="degree" id="hl-degree"></div>
+            </div>
+          </div>
+          <div class="high-low-data">
+            <div class="high">
+              H:7
+              <div class="degree" id="hl-degree"></div>
+            </div>
+            <div class="low">
+              L:2
+              <div class="degree" id="hl-degree"></div>
+            </div>
+          </div>
+          <div class="high-low-data">
+            <div class="high">
+              H:7
+              <div class="degree" id="hl-degree"></div>
+            </div>
+            <div class="low">
+              L:2
+              <div class="degree" id="hl-degree"></div>
+            </div>
+          </div>
+          <div class="high-low-data">
+            <div class="high">
+              H:7
+              <div class="degree" id="hl-degree"></div>
+            </div>
+            <div class="low">
+              L:2
+              <div class="degree" id="hl-degree"></div>
+            </div>
+          </div>
+          <div class="high-low-data">
+            <div class="high">
+              H:7
+              <div class="degree" id="hl-degree"></div>
+            </div>
+            <div class="low">
+              L:2
+              <div class="degree" id="hl-degree"></div>
+            </div>
+          </div>
+          <div class="high-low-data">
+            <div class="high">
+              H:7
+              <div class="degree" id="hl-degree"></div>
+            </div>
+            <div class="low">
+              L:2
+              <div class="degree" id="hl-degree"></div>
+            </div>
+          </div>
+          <div class="high-low-data">
+            <div class="high">
+              H:7
+              <div class="degree" id="hl-degree"></div>
+            </div>
+            <div class="low">
+              L:2
+              <div class="degree" id="hl-degree"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>

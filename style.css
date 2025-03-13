@@ -1,0 +1,160 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+  display: flex;
+  background-attachment: fixed;
+  background-image: linear-gradient(#5072a7, #6cb4ee);
+  flex-direction: column;
+}
+
+#searchbar-container {
+  position: absolute;
+  right: 26px;
+  top: 8px;
+  border: none;
+}
+
+input {
+  width: 180px;
+  height: 23px;
+  border-radius: 5px;
+  border-style: none;
+}
+
+button {
+  position: relative;
+  right: 26px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  font-size: 16px;
+}
+
+#search::placeholder {
+  padding-left: 15px;
+}
+
+#location-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}
+
+#location-temperature,
+#feels-like,
+#high-low,
+#high,
+#low {
+  display: flex;
+  flex-direction: row;
+}
+
+.degree {
+  width: 3px;
+  height: 3px;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+#location-title {
+  font-size: 45px;
+}
+
+#location-temperature {
+  font-size: 65px;
+}
+
+#lt-degree {
+  margin-top: 15px;
+  margin-left: 5px;
+  width: 10px;
+  height: 10px;
+  border: 3px solid white;
+}
+
+#feels-like {
+  font-size: 20px;
+}
+
+#fl-degree,
+#hl-degree {
+  margin-top: 5px;
+  margin-left: 2.5px;
+  width: 5px;
+  height: 5px;
+  border: 2px solid white;
+}
+
+#high-low {
+  font-size: 20px;
+  gap: 10px;
+}
+
+#hourly-forecast,
+#daily-forecast {
+  display: grid;
+  margin-top: 50px;
+  width: 800px;
+  height: 150px;
+  background-color: #007fff;
+  overflow: scroll;
+  border-radius: 10px;
+}
+
+.time-container,
+.icon1-container,
+.temperature-container {
+  margin-left: 15px;
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(28, 1fr);
+  gap: 15px;
+  text-align: center;
+}
+
+.temp-data {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.td-degree {
+  margin-top: 5px;
+  margin-left: 2.5px;
+  width: 3px;
+  height: 3px;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+.time-data,
+.icon-data,
+.temp-data {
+  width: 50px;
+}
+
+.date-container,
+.icon2-container,
+.high-low-container {
+  margin-left: 15px;
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  gap: 15px;
+  text-align: center;
+}
+
+.high-low-data,
+.high-low-container {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
