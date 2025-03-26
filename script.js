@@ -1,3 +1,10 @@
+import { key } from "./key.js";
+let form = document.getElementById("form");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  getWeatherAtLocation();
+});
+
 async function getWeatherAtLocation() {
   event.preventDefault();
   let searchValue = document.getElementById("search").value;
@@ -14,13 +21,17 @@ async function getWeatherAtLocation() {
       console.log(data);
 
       if (data && data.currentConditions) {
-        getCurrentWeather(data.currentConditions);
+        const weatherData = getCurrentWeather(data.currentConditions);
+        weatherData.displayCurrent();
+        displayCurrentWether(weatherData);
       } else {
         console.log("No current weather data available");
       }
 
       if (data && data.days) {
-        getDailyTemperatures(data.days);
+        const dailyTemperatures = getDailyTemperatures(data.days);
+        dailyTemperatures.displayDailyMaxMin();
+        displayDailyTemps(dailyTemperatures);
       } else {
         console.log("No daily temperatures available");
       }
@@ -33,6 +44,36 @@ async function getWeatherAtLocation() {
 }
 
 function getCurrentWeather(current) {
+  return {
+    currentTemp: Math.round(current.temp),
+    currentFeelsLike: Math.round(current.feelslike),
+    currentConditions: Math.round(current.conditions),
+    displayCurrent: function () {
+      console.log(`Temperature: ${this.currentTemp}°C`);
+      console.log(`Feels like: ${this.currentFeelsLike}°C`);
+      console.log(`Conditions: ${this.currentConditions}`);
+    },
+  };
+}
+
+function getDailyTemperatures(days) {
+  if (Array.isArray(days) && days.length > 0) {
+    const currentDay = days[0];
+    return {
+      currentDayMax: Math.round(currentDay.tempmax),
+      currentDayMin: Math.round(currentDay.tempmin),
+      displayDailyMaxMin: function () {
+        console.log(`Max Temperature: ${this.currentDayMax}`);
+        console.log(`Min Temperature: ${this.currentDayMin}`);
+      },
+    };
+  } else {
+    console.log("No daily temperature data available");
+    return null;
+  }
+}
+
+function displayCurrentWether(weatherData) {
   let locationTemperature = document.getElementById("location-temperature");
   let feelLike = document.getElementById("feels-like");
 
@@ -43,17 +84,13 @@ function getCurrentWeather(current) {
   flDegree.setAttribute("class", "degree");
   flDegree.setAttribute("id", "fl-degree");
 
-  locationTemperature.innerHTML = current.temp;
+  locationTemperature.innerHTML = `${weatherData.currentTemp}`;
   locationTemperature.appendChild(locDegree);
-  feelLike.innerHTML = current.feelslike;
+  feelLike.innerHTML = `Feels like: ${weatherData.currentFeelsLike}`;
   feelLike.appendChild(flDegree);
-
-  console.log(`Temperature: ${current.temp}°C`);
-  console.log(`Feels like: ${current.feelslike}°C`);
-  console.log(`Conditions: ${current.conditions}`);
 }
 
-function getDailyTemperatures(days) {
+function displayDailyTemps(dailyTemperatures) {
   let maxTemp = document.getElementById("high");
   let minTemp = document.getElementById("low");
 
@@ -64,17 +101,8 @@ function getDailyTemperatures(days) {
   lDegree.setAttribute("class", "degree");
   lDegree.setAttribute("id", "hl-degree");
 
-  if (Array.isArray(days) && days.length > 0) {
-    const currentDay = days[0];
-
-    maxTemp.innerHTML = `H: ${currentDay.tempmax}`;
-    maxTemp.appendChild(hDegree);
-    minTemp.innerHTML = `L: ${currentDay.tempmin}`;
-    minTemp.appendChild(lDegree);
-
-    console.log(`Max Temperature: ${currentDay.tempmax}`);
-    console.log(`Min Temperature: ${currentDay.tempmin}`);
-  } else {
-    console.log("No daily temperature data available");
-  }
+  maxTemp.innerHTML = `H: ${dailyTemperatures.currentDayMax}`;
+  maxTemp.appendChild(hDegree);
+  minTemp.innerHTML = `L: ${dailyTemperatures.currentDayMin}`;
+  minTemp.appendChild(lDegree);
 }
